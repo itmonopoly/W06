@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Keyframes</title>
+</head>
+<body>
+
+<div class="apple"></div>
+
+<div class="orange"></div>
+
+<style>
+	.orange {
+		width: 0%;
+		height: 100px;
+		background: green;
+		position: absolute;
+		animation: load 5s infinite linear;
+	}
+
+	@keyframes load {
+		0% {
+			width: 0%;
+		}
+
+		25% {
+			width: 100%;
+		}
+
+		50% {
+			width: 0%;
+			right: 0;
+		}
+
+		75% {
+			width: 100%;
+		}
+
+		100% {
+			width: 0%;
+			right: initial;
+		}
+	}
+
+	.apple {
+		width: 100px;
+		height: 100px;
+		background: orange;
+		animation: fruit 1s infinite linear;
+	}
+
+	@keyframes fruit {
+		0% {
+			margin-left: 0%;
+			transform: rotateZ(0deg);
+		}
+
+		50% {
+			margin-left: 100%;
+			transform: rotateZ(360deg);
+		}
+
+		100% {
+			margin-left: 0%;
+			transform: rotateZ(0deg);
+		}
+	}
+</style>
+
+</body>
+</html>

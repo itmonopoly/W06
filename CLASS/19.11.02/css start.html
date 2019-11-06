@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CSS Start</title>
+</head>
+<body>
+
+<center>
+	<font color="red">
+		<b>
+			hello world
+		</b>
+	</font>
+</center>
+
+<div class="apple" style="color: red; font-weight: bold; text-align: center;">hello world</div>
+
+<style>
+	.apple {
+		color: green !important;
+	}
+</style>
+
+
+<div class="orange">
+	<div class="plum"></div>
+</div>
+<br>
+<div class="banana"></div>
+
+<div class="rat">rat</div>
+<div class="rat">123</div>
+
+<style>
+	.rat:before {
+		content: "<<<";
+	}
+	.rat:after {
+		content: ">>>";
+	}
+	.orange {
+		width: 100px;
+		height: 100px;
+		background: orange;
+	}
+
+	.plum {
+		width: 50px;
+		height: 50px;
+		background: purple;
+	}
+
+	.banana {
+		width: 100px;
+		height: 100px;
+		background: orange;
+	}
+
+	.banana:after {
+		content: "";
+		display: block;
+		width: 50px;
+		height: 50px;
+		background: purple;
+	}
+</style>
+
+
+
+</body>
+</html>
