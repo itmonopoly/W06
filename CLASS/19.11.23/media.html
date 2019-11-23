@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Document</title>
+</head>
+<body>
+	<style>
+		.apple {
+			background: orange;
+			display: inline-block;
+			width: 50%;
+			height: 100px;
+			transition: all, .25s;
+		    vertical-align: top;
+		}
+
+		.orange {
+			background: green;
+			display: inline-block;
+			width: 50%;
+			height: 100px;
+			transition: all, .25s;
+			margin-left: -4px;
+		    vertical-align: top;
+		}
+
+		/* от 0 до 1000 */
+		@media (max-width: 1000px) {
+			.apple {
+				background: purple;
+			}
+		}
+
+		@media (max-width: 500px) {
+			.apple {
+				width: 100%;
+			}
+
+			.orange {
+			    margin-left: 0px;
+    			width: 100%;
+			}
+		}
+	</style>
+
+	<div class="apple"></div>
+	<div class="orange"></div>
+
+		
+</body>
+</html>

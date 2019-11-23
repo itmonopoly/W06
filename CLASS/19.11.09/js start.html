@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS Start</title>
+</head>
+<body>
+	
+<!-- <script async src="lib.js"></script> -->
+<!-- <script async src="forLib.js"></script> -->
+<!-- <script defer src="lib.js"></script>
+<script defer src="forLib.js"></script> -->
+
+<script>
+	var apple;
+	var orange = 10;
+	var fruit;
+	var Fruit;
+	// var fruit = new Fruit();
+	var n = 10;
+	var str = "Hello";
+	var bool = true;
+	var nul = null;
+	var obj = {}
+	var undef = undefined;
+
+	// console.log(typeof n); // number
+	// console.log(typeof str); // string
+	// console.log(typeof bool); // boolean
+	// console.log(typeof nul); // object
+	// console.log(typeof obj); // object
+	// console.log(typeof undef); // undefined
+
+	// 5 - 5 - бинарный минус
+	// -5 - унарный минус
+
+	var x = 5;
+	x = -x;
+	var nStr = "10";
+	console.log(nStr);
+	console.log(+nStr);
+	console.log("Привет" + "Мир");
+	console.log(10 + 10);
+	console.log(10 + "10");
+	console.log(10 * "10");
+	console.log(10 + +"10");
+	console.log(10 + Number("10"));
+
+	var inc = 10;
+	inc++
+	inc = inc + 2;
+	inc += 2;
+	console.log(inc);
+
+	var x = 10;
+	var y = 20;
+	var b = 10;
+	var c = "10";
+
+	console.log(x > y); // false
+	console.log(x != y); // true
+	console.log(x !== y); // true
+	console.log(x == y); // false
+	console.log(x === b); // true
+	console.log(x === c); // false
+	console.log("2" > "14"); // true
+
+
+	//var numA = prompt("Введите число А");
+	//var numB = prompt("Введите число B");
+
+	//console.log(+numA + +numB)
+
+	var convertN = 100;
+	console.log(convertN.toString()) // "100";
+
+	console.log(greeting());
+	// Декларированная функция
+	function greeting(name = "Default") {
+		return "Hello " + name;
+	}
+
+	// Функциональное выражение
+	var greetingVar = function(name = "Default") {
+		return "Hello " + name;
+	}
+	console.log(greetingVar("Var"))
+
+	console.log(greeting());
+	console.log(greeting("Вася"));
+	console.log(greeting(1));
+
+	// Рекурсия
+	function fact(n) {
+		if(n === 0) {
+			return 1;
+		} else {
+			return n * fact(n - 1);
+		}
+	}
+
+	console.log(fact(5)) // 120
+
+	var fruitFunc = function orange(n) {
+		if(n === 0) {
+			return 1;
+		} else {
+			return n * orange(n - 1);
+		}
+	}
+
+	console.log(fruitFunc(5)) // 120
+	var vegetable = fruitFunc;
+	console.log(vegetable)
+	fruitFunc = null;
+	console.log(vegetable(5));
+
+	(function (b) {
+		var a = 10;
+		console.log(a + b)
+	})(30)
+
+	{
+		let a = 10
+	}
+
+	var banana = function() {
+		return 10;
+	}
+
+	console.log(banana())
+
+</script>
+
+</body>
+</html>

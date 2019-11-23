@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Callback</title>
+</head>
+<body>
+	
+<script>
+	var apple = function() {}
+
+	function calc(a, b, callback) {
+		setTimeout(function() {
+			var c = a + b;
+			callback(c);
+		}, 1000);
+	}
+
+	console.log("start");
+	calc(10, 20, function(result) {
+		console.log(result)
+	});
+	console.log("end");
+
+	// https://learn.javascript.ru/callbacks
+</script>
+
+</body>
+</html>

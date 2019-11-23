@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+<div class="apple orange banana">Яблоко 1</div>
+<div class="apple">Яблоко 2</div>
+<div class="apple">Яблоко 3</div>
+
+<script>
+	// window
+	// var a = "10";
+	// window.a === a;
+	// window.setInterval()
+
+	console.log(document)
+
+	// 1. Выбор элементов
+	var apple = document.querySelector(".apple");
+	var appleAll = document.querySelectorAll(".apple");
+
+	console.log(apple)
+	console.dir(apple)
+
+	console.log(apple.innerHTML);
+	console.log(appleAll);
+	console.log(appleAll[1].innerHTML)
+	//apple.innerHTML = "Апельсин";
+	//console.log(apple.innerHTML);
+
+	// 2. Модификация элементов
+	apple.innerHTML = "APPLE 001";
+	console.log(apple.className)
+	apple.classList.add("weapon");
+	apple.classList.remove("banana");
+	console.log(apple.classList.contains("weapon")) // true/false если есть или нет класса
+	apple.classList.toggle("orange");
+	apple.classList.toggle("plum"); // Добавляет если есть и удаляет если нет
+	apple.style.background = "orange";
+	apple.style.marginLeft = "100px";
+	// image.setAttribute("src", "2.jpg");
+	// image.src = "2.jpg"
+
+	apple.setAttribute("data-weight", "100kg");
+	var appleResult = apple.getAttribute("data-weight");
+
+	console.log(appleResult);
+	console.log(parseInt(appleResult));
+	console.log(parseFloat("5.123kg")); // "Мягкое" преобразование. Посивольное
+
+	// 3. События
+	apple.onclick = function() {
+		console.log("onclick: Кликнули 1111")
+	}
+	apple.onclick = function() {
+		console.log("onclick: Кликнули 2222 ")
+	}
+
+	apple.addEventListener("click", function() {
+		console.log("addEventListener: Кликнули 1111 ")
+	})
+
+	apple.addEventListener("click", function() {
+		console.log("addEventListener: Кликнули 2222");
+		window.dispatchEvent(new Event("wtf???"));
+	})
+
+	// addEventListener можно много функций вешать на одно событиие
+	// addEventListener можно прослушивать современные события
+	// addEventListener можно прослушывать СОБСТВЕННЫЕ события
+
+	window.dispatchEvent(new Event("wtf???"));
+
+	window.addEventListener("wtf???", function() {
+		console.log("Работает ?!?!?")
+	});
+
+	
+
+</script>
+
+</body>
+</html>

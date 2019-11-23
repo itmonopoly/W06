@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>DOM nav</title>
+</head>
+<body>
+	
+<div class="apple">
+	<div class="orange">
+		<div class="banana"></div>
+	</div>
+	<div class="milk"></div>
+	<div class="cherry"></div>
+</div>
+
+<div class="node-test">
+	<!-- apple = 10 -->
+	<div class="one">123</div>
+	<div class="two">321</div>
+</div>
+
+<script>
+	var apple = document.querySelector(".apple");
+	var nodeTest = document.querySelector(".node-test");
+
+	console.log(apple.children)
+	console.log(apple.firstElementChild)
+	console.log(apple.lastElementChild)
+	console.log(apple.firstElementChild.nextElementSibling.previousElementSibling.parentElement);
+
+	console.log(nodeTest.children)
+	console.log(nodeTest.childNodes)
+</script>
+
+</body>
+</html>

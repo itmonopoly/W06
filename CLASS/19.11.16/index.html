@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Структура данных</title>
+</head>
+<body>
+
+<script>
+	var a = 5.173;
+
+	console.log(a.toFixed(1));
+	console.log(typeof a.toFixed(1));
+
+	var b = "Hello";
+	console.log(b.toUpperCase())
+
+	var arr = [1,2,3];
+	arr.push(4);
+	arr.pop();
+	arr.unshift(555); // [555, 1, 2, 3]
+	arr.shift();
+
+	//var user = ["Alex", 30, 190, 90, 60, 90, ["key", "money"]];
+	var user = {
+		name: "Alex",
+		age: 30,
+		height: 190,
+		size: {
+			a: 90,
+			b: 60,
+			c: 90
+		},
+		loot: ["key", "money"],
+		greeting: function() {
+			return this.name + ": Hola";
+		}
+	}
+
+	// user.name - "Alex"
+	// user.size.a - 90
+	// user.loot[0] - "key"
+	user.head = "big"
+	// user.greeting = function() { this - user }
+
+	console.log(user)
+	console.log(user.name)
+	console.log(user["name"])
+	console.log(user.greeting())
+	console.log(user["greeting"]())
+
+	for(var item in user) {
+		if(typeof user[item] === "function") {
+			console.log(user[item]());
+		} else {
+			console.log(user[item]);
+		}
+	}
+
+	if("age" in user) {
+		console.log("Есть такое")
+	}
+	if(user.age) {
+		console.log("Есть такое")
+	}
+
+	// user["a b c"] = 123;
+
+	var array = ["bmw", "mersedes", "lada"];
+
+	array.forEach(function(item, index) { // callback
+		console.log(item, index)
+	});
+
+	var mapResult = array.map(function(item, index) { // callback
+		return item.length;
+	});
+
+	var filterResult = array.filter(function(item, index) { // callback
+		if(item.length < 5) {
+			return true;
+		}
+	})
+
+	console.log(mapResult);
+	console.log(filterResult);
+
+	//////////////////////////////////
+	var str = "Hello world";
+	console.log(str.split(" "));  // ["Hello", "world"]
+	console.log(str.split("").reverse().join(""));
+	console.log(str.split("").reverse().join("").split("").reverse().join(""));
+
+	// var arraySort = [10,2,6,7,14,24];
+
+	// arraySort.sort(function(a, b) {
+	// 	if(a > b) return 1;
+	// 	if(a < b) return -1;
+	// });
+
+	// console.log(arraySort);
+
+	var aaa = [1,2,3];
+	var bbb = [6,7,8];
+
+	var aaa = aaa.concat(bbb);
+
+	console.log(aaa);
+	console.log(aaa.indexOf(7)) // 4
+	console.log(aaa.indexOf(10)) // -1
+
+	// uniq item in array
+	function createUniqArray(count) {
+		var result = [];
+		var random = Math.floor(Math.random() * count);
+
+		while(result.length < count) {
+			if(result.indexOf(random) === -1) {
+				result.push(random);
+			}
+			random = Math.floor(Math.random() * count);
+		}
+
+		return result;
+	}
+	console.time();
+	console.log(createUniqArray(100));
+	console.timeEnd();
+
+	function fruits() {
+		//return [1,2,3];
+		return {
+			a: 10,
+			b: 20
+		}
+	}
+
+	var apple = fruits();
+	apple.c = 30;
+	console.log(apple)
+
+	function Fruits() {
+		// this = {};
+		this.color = "green";
+		this.size = "big";
+		// return this;
+	}
+
+	var orange = new Fruits();
+	console.log(orange instanceof Fruits);
+
+	var objA = { x: 10 }
+	var objB = objA;
+
+	console.log(objB) // {x: 10}
+	objB.x = 20;
+	console.log(objA) // {x: 20}
+
+</script>
+
+</body>
+</html>
