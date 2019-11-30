@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Tabs</title>
+</head>
+<body>
+	
+<style>
+	.container {
+	    width: 500px;
+    	margin: 40px auto;
+	}
+
+	.tabs {
+	    border-bottom: 1px solid #dcdcdc;
+	    margin-bottom: 10px;
+	    padding-bottom: 10px;
+	}
+
+	.tab {
+	    display: inline-block;
+	    margin-right: 10px;
+	    cursor: pointer;
+	}
+
+	.tab-active {
+		border: 1px solid orange;
+		box-sizing: border-box;
+	}
+
+	.content {
+		display: none;
+	}
+
+	.content-active {
+		display: block;
+	}
+</style>
+
+<div class="container">
+	<div class="tabs">
+		<div class="tab tab-active" data-index="0">Apple</div>
+		<div class="tab" data-index="1">Orange</div>
+		<div class="tab" data-index="2">Banana</div>
+	</div>
+	<div class="contents">
+		<div class="content content-active">Яблоки</div>
+		<div class="content">Апельсины</div>
+		<div class="content">Бананы</div>
+	</div>
+</div>
+
+<script>
+	var tabs = document.querySelector(".tabs");
+	var tabList = document.querySelectorAll(".tab");
+	var contentList = document.querySelectorAll(".content");
+
+	tabs.addEventListener("click", tabsHandler);
+
+	function tabsHandler(e) {
+		if(e.target.classList.contains("tab")) {
+			var index = e.target.getAttribute("data-index"); // e.target - html объект, по которому нажали
+			var content = contentList[index];
+			var tab = tabList[index];
+
+			for(var i = 0; i < contentList.length; i++) {
+				contentList[i].classList.remove("content-active");
+				tabList[i].classList.remove("tab-active");
+			}
+
+			content.classList.add("content-active");
+			tab.classList.add("tab-active");
+		}
+
+	}
+</script>
+
+</body>
+</html>

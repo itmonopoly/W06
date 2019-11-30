@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Check list</title>
+</head>
+<body>
+	
+<input type="text" class="text">
+<input type="submit" class="button" value="Добавить">
+<div class="list"></div>
+
+<script>
+	var text = document.querySelector(".text");
+	var button = document.querySelector(".button");
+	var list = document.querySelector(".list");
+
+	button.addEventListener("click", addTask);
+
+	function addTask() {
+		// элементы формы .value
+		// обычные html .innerHTML
+
+		var task = text.value;
+
+		list.innerHTML += task + "<br>";
+		text.value = "";
+	}
+</script>
+
+</body>
+</html>
