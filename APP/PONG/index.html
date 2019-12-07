@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Pong</title>
+</head>
+<body>
+
+<style>
+	.field {
+		width: 500px;
+		height: 300px;
+		border: 1px solid black;
+		margin: 0 auto;
+		margin-top: 50px;
+		position: relative;
+		box-sizing: border-box;
+	}
+
+	.ball {
+		width: 10px;
+		height: 10px;
+		border-radius: 50%;
+		background: black;
+		position: absolute;
+	}
+
+	.player {
+		width: 10px;
+		height: 100px;
+		background: green;
+		position: absolute;
+	}
+
+	.score {
+	    position: absolute;
+    	top: -20px;
+	}
+
+	.score:before {
+		content: "Очки ";
+	}
+</style>
+	
+<div class="field">
+	<div class="player"></div>
+	<div class="ball"></div>
+	<div class="score"></div>
+</div>
+
+
+<script>
+	var field = document.querySelector(".field");
+	var scoreEl = document.querySelector(".score");
+	var timer;
+	var ball = {
+		el: document.querySelector(".ball"),
+		x: 240,
+		y: 140
+	}
+	var player = {
+		el: document.querySelector(".player"),
+		y: 0
+	}
+	var score = 0;
+	var resolution = {
+		x: true,
+		y: true
+	}
+		
+	function ballMove() {
+		if(resolution.x) {
+			ball.x++;
+
+			if(ball.x === field.offsetWidth - ball.el.offsetWidth) {
+				resolution.x = false;
+			}
+		} else {
+			ball.x--;
+
+			if(ball.x === 0) {
+				gameover();
+			}
+		}
+
+		if(resolution.y) {
+			ball.y++;
+
+			if(ball.y === field.offsetHeight - ball.el.offsetHeight) {
+				resolution.y = false;
+			}
+		} else {
+			ball.y--;
+
+			if(ball.y === 0) {
+				resolution.y = true;
+			}
+		}
+
+		if(ball.y > player.y 
+			&& ball.y < player.y + player.el.offsetHeight
+			&& ball.x < player.el.offsetWidth) {
+			resolution.x = true;
+			score++;
+		}
+
+		ball.el.style.left = ball.x + "px";
+		ball.el.style.top = ball.y + "px";
+		scoreEl.innerHTML = score;
+	}
+
+	document.addEventListener("keydown", function(e) {
+		switch(e.keyCode) {
+			case 38:
+				if(player.y > 0) {
+					player.y--;
+				}
+
+				break;
+			case 40:
+				if(player.y < field.offsetHeight - player.el.offsetHeight - 1) {
+					player.y++;
+				}
+				break;
+		}
+
+		player.el.style.top = player.y + "px";
+	})
+
+	function gameover() {
+		clearInterval(timer);
+		score = 0;
+	}
+
+	timer = setInterval(ballMove, 10);
+</script>
+
+</body>
+</html>

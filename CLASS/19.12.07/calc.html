@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Calc</title>
+</head>
+<body>
+	
+<script>
+	var a = Number(prompt("Введите число a"));
+	var b = Number(prompt("Введите число b"));
+
+	if(!isNaN(a) && !isNaN(b)) {
+		var o = prompt("Введите оператор / + - *");
+		
+		switch(o) {
+			case "/":
+				console.log(a / b);
+				break;
+			case "+":
+				console.log(a + b);
+				break;
+			case "-":
+				console.log(a - b);
+				break;
+
+			case "*":
+				console.log(a * b);
+				break;
+			default:
+				console.log("Оператор введен неверно");
+		}
+	} else {
+		console.log("Введите число");
+	}
+</script>
+
+</body>
+</html>

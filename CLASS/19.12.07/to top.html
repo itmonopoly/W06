@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>To top</title>
+</head>
+<body>
+	
+<style>
+	body {
+		margin: 0;
+	}
+
+	.content {
+		background: linear-gradient(orange, green);
+		height: 5000px;
+	}
+
+	.to-top {
+		position: fixed;
+		width: 100px;
+		height: 100px;
+		background: aqua;
+		bottom: 50px;
+		left: 50px;
+		text-align: center;
+		line-height: 100px;
+		font-family: Arial;
+		font-size: 50px;
+		cursor: pointer;
+	}
+
+	.to-top::selection {
+		background: none;
+	}
+</style>
+
+<div class="content"></div>
+
+<div class="to-top">UP</div>
+
+<script>
+	var top = document.querySelector(".to-top");
+	var y = 0;
+
+	top.addEventListener("click", function() {
+		y = window.scrollY;
+
+		var timer = setInterval(function() {
+			if(y <= 0) clearInterval(timer);
+
+			y -= 50;
+			window.scrollTo(0, y);
+		}, 0)
+	})
+</script>
+
+</body>
+</html>

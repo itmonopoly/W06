@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>setInterval</title>
+</head>
+<body>
+
+<style>
+	.player {
+		width: 30px;
+		height: 30px;
+		background: black;
+		position: absolute;
+	}
+</style>
+	
+<div class="player"></div>
+
+<script>
+	var player = document.querySelector(".player");
+
+	
+	document.addEventListener("click", function(e) {
+		var x = 0;
+		var y = 0;
+		var endX = e.x;
+		var endY = e.y;
+
+		var timer = setInterval(function() {
+			if(x <= endX) {
+				x++;
+			} else {
+				x--;
+			}
+			if(y <= endY) {
+				y++
+			} else {
+				y--;
+			}
+
+			if(x === endX && y === endY) clearInterval(timer);
+
+			player.style.left = x + "px";
+			player.style.top = y + "px";
+		}, 10)
+	})
+</script>
+
+</body>
+</html>
