@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>toJSON</title>
+</head>
+<body>
+	
+<script>
+	var obj = {
+		a: 10,
+		b: 20,
+		c: 30,
+		toJSON: function() {
+			return {
+				a: 10,
+				b: 20
+			}
+		}
+	}
+
+	console.log(JSON.stringify(obj)) // {"a":10,"b":20}
+	console.log(JSON.parse('{"a":10,"b":20,"c":30}')); // {a: 10, b: 20, c: 30}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Получить родительский класс</title>
+</head>
+<body>
+	
+<script>
+	var obj = {};
+	var arr = [1,2,3];
+	var num = 10;
+	var str = "Hello";
+	var bool = true;
+	var func = function() {};
+
+	console.log(obj.toString()); // [object Object]
+	console.log(obj.toString.call(arr)); // [object Array]
+	console.log(obj.toString.call(num)); // [object Number]
+	console.log(obj.toString.call(str)); // [object String]
+	console.log(obj.toString.call(bool)); // [object Boolean]
+	console.log(obj.toString.call(func)); // [object Function]
+
+	/*
+		toString() {
+			return this[[Class]]
+		}
+	*/
+
+</script>
+
+</body>
+</html>

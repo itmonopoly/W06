@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Анонимная самовызывающиеся функция</title>
+</head>
+<body>
+	
+<script>
+	(function () {
+		var a = 10;
+		var b = 20;
+
+		function apple() {
+			return a + b;
+		}
+
+		apple();
+	})();
+
+	var armyFunc = [];
+
+	for(var i = 0; i < 10; i++) {
+		(function(index = 0) {
+			armyFunc.push(function() {
+				return index;
+			})
+		})(i)
+	}
+
+	console.log(armyFunc[0]())
+	console.log(armyFunc[5]())
+	console.log(armyFunc[9]())
+
+</script>
+
+</body>
+</html>

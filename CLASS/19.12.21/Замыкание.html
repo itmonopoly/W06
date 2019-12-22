@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Замыкание</title>
+</head>
+<body>
+
+<script>
+	function Generator(start) {
+		var count = start;
+
+		return function() {
+			count++;
+
+			return count;
+		}
+	}
+
+	var apple = Generator(10);
+	var orange = Generator(20);
+
+	console.log(apple());
+	console.log(apple());
+	console.log(orange());
+	console.log(apple());
+
+</script>
+	
+</body>
+</html>

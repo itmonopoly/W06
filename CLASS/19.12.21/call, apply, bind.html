@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>call, apply, bind</title>
+</head>
+<body>
+	
+<script>
+	var obj = {
+		name: "Alex",
+		greeting: function() {
+			//console.log(this);
+			return "Hello " + this.name;
+		}
+	}
+
+	var fake = {
+		name: "Bob"
+	}
+
+	console.log(obj.greeting());
+	console.log(obj.greeting.call(fake)); // this = fake
+
+	// call меняет контекст
+
+	console.log(Math.max(10,20,30,40,50));
+	console.log(Math.max.call(Math,10,20,30,40,50));
+	console.log(Math.max.apply(Math,[10,20,30,40,50]));
+
+	var cars = {
+		count: 0,
+		incCount: function() {
+			this.count++;
+
+			console.log(this.count);
+		}
+	}
+
+	cars.incCount.bind(cars)()
+
+	cars.incCount.call(cars)
+
+	setInterval(cars.incCount.bind(cars), 1000);
+</script>
+
+</body>
+</html>
