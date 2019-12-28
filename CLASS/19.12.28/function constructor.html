@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Function constructor</title>
+</head>
+<body>
+	
+<script>
+	function Fruits() {
+		// this = {}
+		this.apple = 10;
+		// this = { apple: 10}
+	}
+
+	function Task(text) {
+		// this = {}
+		Fruits.call(this)
+		this.text = text;
+		this.date = new Date();
+		// return this;
+	}
+
+	Task.prototype.getText = function() {
+		return this.text;
+	}
+
+	var task01 = new Task("Погулять с собакой");
+
+	Task.prototype.getDate = function() {
+		return this.date;
+	}
+</script>
+
+</body>
+</html>

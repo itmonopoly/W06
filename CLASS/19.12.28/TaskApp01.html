@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>TaskApp01</title>
+</head>
+<body>
+	
+<input type="text" class="text">
+<input type="submit" class="button" value="+">
+<div class="list"></div>
+
+<script>
+	class Task {
+		constructor(text) {
+			this._text = text;
+			this._date = new Date();
+			// Новое, Просроченно
+			this.status = "Новое";
+		}
+
+		getDate() {
+			return this._date;
+		}
+
+		getText() {
+			return this._text;
+		}
+	}
+
+	class Tasks {
+		constructor(list) {
+			this._tasks = [];
+			this._list = list;
+			this._init();
+		}
+
+		add(value) {
+			this._tasks.push(value);
+		}
+
+		getExpired() {
+			for(var i = 0; i < this._tasks.length; i++) {
+				var currentDate = +new Date();
+				var taskDate = +this._tasks[i].getDate();
+
+				if((currentDate - taskDate) > 10000) {
+					this._tasks[i].status = "Просроченно";
+				}
+			}
+
+			this.render();
+		}
+
+		render() {
+			list.innerHTML = "";
+
+			for(var i = 0; i < this._tasks.length; i++) {
+				var task = document.createElement("div");
+
+				switch(this._tasks[i].status) {
+					case "Новое":
+						task.style.background = "grey";
+
+						break;
+					case "Просроченно":
+						task.style.background = "red";
+
+						break;
+				}
+
+				task.innerHTML = this._tasks[i].getText();
+				this._list.appendChild(task);
+			}
+		}
+
+		_init() {
+			setInterval(this.getExpired.bind(this), 1000);
+		}
+	}
+
+	var text = document.querySelector(".text");
+	var button = document.querySelector(".button");
+	var list = document.querySelector(".list");
+	var tasks = new Tasks(list);
+
+	button.addEventListener("click", handler);
+
+	function handler() {
+		tasks.add(new Task(text.value));
+		tasks.render();
+		text.value = "";
+
+	}
+</script>
+
+</body>
+</html>

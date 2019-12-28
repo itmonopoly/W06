@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Class</title>
+</head>
+<body>
+	<div class="apple" nokia-apple="1" nokia-orange="1" siemens-banana="2" lg-cherry="10">Apple</div>
+	<script>
+		HTMLElement.prototype.getDataByPrefix = function(prefix) {
+			var attributes = this.getAttributeNames();
+			var result = [];
+
+			for(var i = 0; i < attributes.length; i++) {
+				if(attributes[i].startsWith(prefix)) {
+					result.push(this.getAttribute(attributes[i]));
+				}
+			}
+
+			return result;
+		}
+
+		//
+	
+		class Task {
+			constructor(text) {
+				this._task = text;
+				this._date = new Date();
+			}
+
+			getTask() {
+				return this._task;
+			}
+		}
+
+		var task01 = new Task("Погулять с собакой");
+
+		class Fruits extends Task {
+			constructor(text, color) {
+				super(text); // вызывает констуктор родителя\
+				this._color = color;
+			}
+
+			run() {
+				return "Бегать..."
+			}
+		}
+
+		var apple = new Fruits("Съесть яблоко", "зеленые");
+	</script>
+</body>
+</html>
