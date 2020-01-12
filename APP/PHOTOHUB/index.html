@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Photohub</title>
+	<link rel="stylesheet" href="css/uikit.min.css">
+</head>
+<body>
+	
+<div class="uk-container uk-margin-large-top">
+	<div class="uk-flex">
+		<input type="text" class="uk-input js-text" placeholder="Введите текст запроса...">
+		<input type="submit" class="uk-button js-button" value="Поиск">
+	</div>
+	<div class="js-cards uk-flex uk-flex-wrap"></div>
+</div>
+
+<script src="js/uikit.min.js"></script>
+<script>
+	var apikey = "fc5cce4939de8d21ca63601fbf451b722e73190ec5367b06ed449ba2178f00bb";
+	var url = "https://api.unsplash.com/search/photos?client_id=";
+	var cards = document.querySelector(".js-cards");
+	var text = document.querySelector(".js-text");
+	var button = document.querySelector(".js-button");
+	var card = `
+		<a href="%href%" class="uk-width-1-5" target="_blank">
+			<div class="uk-card uk-card-default uk-card-body uk-height-small uk-background-cover" style="background-image: url(%img%);"></div>
+		</a>`;
+
+	button.addEventListener("click", handler);
+
+	function handler() {
+		var query = text.value;
+		var ajax = new XMLHttpRequest();
+		
+		ajax.onreadystatechange = function() {
+			if(ajax.readyState === 4 && ajax.status === 200) {
+				var data = JSON.parse(ajax.responseText);
+				var images = data.results;
+
+				for(var i = 0; i < images.length; i++) {
+					var thumb = images[i].urls.thumb;
+					var raw = images[i].urls.raw;
+
+					cards.innerHTML += card.replace("%img%", thumb).replace("%href%", raw);
+				}
+			}
+		}
+		ajax.open("GET", url + apikey + "&query=" + query);
+		ajax.send();
+	}
+</script>
+
+</body>
+</html>
