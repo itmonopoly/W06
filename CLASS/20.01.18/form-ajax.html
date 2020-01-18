@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>form</title>
+</head>
+<body>
+	
+<form class="form" action="http://localhost/php/server.php" method="GET">
+	<input class="apple" type="text"><br>
+	<input class="orange" type="text"><br>
+	<input class="button" type="submit">
+</form>
+
+<script>
+	var form = document.querySelector(".form");
+	var apple = document.querySelector(".apple");
+	var orange = document.querySelector(".orange");
+	var button = document.querySelector(".button");
+	var ajax = new XMLHttpRequest();
+
+	form.addEventListener("submit", function(e) {
+		e.preventDefault();
+	})
+
+	button.addEventListener("click", function() {
+		ajax.onreadystatechange = function() {
+			if(ajax.readyState === 4 && ajax.status === 200) {
+				console.log(ajax.responseText);
+			}
+		}
+		ajax.open("GET", form.action + "?apple=" + apple.value + "&orange=" + orange.value);
+		ajax.send();
+	})
+</script>
+
+</body>
+</html>

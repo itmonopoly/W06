@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Ajax</title>
+</head>
+<body>
+	
+<script>
+	var ajax = new XMLHttpRequest();
+
+	ajax.onreadystatechange = function() {
+		if(ajax.readyState === 4 && ajax.status === 200) {
+			console.log(ajax.responseText);
+		}
+	}
+	ajax.open("GET", "http://localhost/php/server.php?apple=123&orange=123");
+	ajax.send();
+
+
+</script>
+
+</body>
+</html>

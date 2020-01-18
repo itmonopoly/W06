@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Ajax</title>
+</head>
+<body>
+	
+<script>
+	var ajax = new XMLHttpRequest();
+
+	ajax.onreadystatechange = function() {
+		if(ajax.readyState === 4 && ajax.status === 200) {
+			console.log(ajax.responseText);
+		}
+	}
+	ajax.open("POST", "http://localhost/php/server-post.php");
+	ajax.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+	ajax.send("apple=123&orange=123");
+
+
+</script>
+
+</body>
+</html>
