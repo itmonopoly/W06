@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>WebSocket</title>
+</head>
+<body>
+	
+<script>
+	var ws = new WebSocket("ws://localhost:7777");
+
+	ws.onmessage = function(message) {
+		console.log(message.data)
+		ws.send("Hello from client")
+	}
+</script>
+
+</body>
+</html>

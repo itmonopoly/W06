@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Socket client</title>
+</head>
+<body>
+	
+<input type="text" class="messsage" placeholder="Message">
+<input type="submit" class="button">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+<script>
+	var messsage = document.querySelector(".messsage");
+	var button = document.querySelector(".button");
+	//var socket = io("ws://localhost:7777/");
+
+	button.addEventListener("click", function() {
+		//socket.emit("fromClient", messsage.value);
+	})
+
+	// socket.on("fromServer", function(message) {
+	// 	console.log(message)
+	// })
+</script>
+</body>
+</html>
