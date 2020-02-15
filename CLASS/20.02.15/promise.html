@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+<script>
+	new Promise(function(resolve, reject) {
+		var db = { user: "Alex" }
+
+		if(true) {
+			resolve(db);
+		} else {
+			reject("Error")
+		}
+		
+	}).then(function(data) {
+		console.log(data)
+		var newUser = data.user.toUpperCase();
+
+		return newUser;
+	}).then(function(name) {
+		console.log(name)
+
+		var array = name.split("");
+
+		return array;
+
+	}).then(function(arrayWords) {
+		var firstWord = arrayWords[0];
+
+		console.log(firstWord)
+	}).catch(function(errorType) {
+		console.log(errorType)
+	})
+
+	fetch("https://api.myjson.com/bins/jwxm8").then(data => {
+    	return data.json()
+	}).then(result => {
+	    console.log(result)
+	})
+</script>
+
+</body>
+</html>

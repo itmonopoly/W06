@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<style>
+		.field {
+			width: 500px;
+			height: 300px;
+			border: 1px solid;
+			margin: 0 auto;
+			margin-top: 50px;
+			position: relative;
+		}
+
+		.player {
+			width: 10px;
+			height: 10px;
+			background: green;
+			border-radius: 50%;
+			position: absolute;
+		}
+	</style>
+
+	<div class="field">
+		<div class="player"></div>
+	</div>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+	<script>
+		var player = document.querySelector(".player");
+		var field = document.querySelector(".field");
+		var playerX = 0;
+		var playerY = 0;
+		var timerX;
+		var timerY;
+		var resolutionX = true;
+		var resolutionY = true;
+		var socket = io("http://localhost:7777");
+
+		field.addEventListener("click", function(e) {
+			var x = e.x - this.offsetLeft;
+			var y = e.y - this.offsetTop;
+
+			socket.emit("requestMove", { x: x, y: y })
+			
+			socket.on("move", coordinates => {
+				if(resolutionX) {
+					timerX = setInterval(function() {
+						playerMoveX(coordinates.x);
+						socket.emit("moving", { x: playerX, y: playerY })
+					}, 10);
+				}
+
+				if(resolutionY) {
+					timerY = setInterval(function() {
+						playerMoveY(coordinates.y);
+						socket.emit("moving", { x: playerX, y: playerY })
+					}, 10);
+				}
+
+				resolutionX = false;
+				resolutionY = false;
+			})
+
+
+		})
+
+		function playerMoveX(x) {
+
+			if(playerX < x) {
+				playerX++;
+			} else if(playerX > x) {
+				playerX--;
+			} else {
+				clearInterval(timerX);
+				resolutionX = true;
+			}
+			player.style.left = playerX - (player.offsetWidth / 2) + "px";
+		}
+
+		function playerMoveY(y) {
+
+			if(playerY < y) {
+				playerY++;
+			} else if(playerY > y) {
+				playerY--;
+			} else {
+				clearInterval(timerY);
+				resolutionY = true;
+			}
+			player.style.top = playerY - (player.offsetHeight / 2) + "px";
+		}
+	</script>
+</body>
+</html>
