@@ -1,0 +1,2 @@
+1) Вывести данные /products используя cart от uikit (https://getuikit.com/docs/card)
+2) Добавить в продукты ссылку на изображение {"name":"obj1","price":"200","image":"http://localhost:666/public/iphone.jpg"}
