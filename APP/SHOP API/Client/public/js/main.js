@@ -11,16 +11,61 @@
 
 		xhr.open("GET", `http://localhost:666${pathname}`);
 		xhr.send();
-
-		// xhr.open("POST", "http://localhost:666/products");
-		// xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-		// xhr.send("name=obj7&price=5000");
 	}
 
 	window.addEventListener("popstate", () => {
 		var pathname = window.location.hash.slice(1);		
 
 		request(pathname, data => {
-			body.innerHTML = data;
+			showData(JSON.parse(data));
+		})
+
+	})
+
+	window.addEventListener("load", () => {
+		request("/", data => {
+			showData(JSON.parse(data));
 		})
 	})
+	
+	function showData(data) {
+		body.innerHTML = "";
+
+		if(data.type === "products") {
+			for(let i = 0; i < data[data.type].length; i++){
+				let item = data[data.type][i];
+				let card = document.createElement("div");
+				let name = document.createElement("div");
+				let image = document.createElement("img");
+				let price = document.createElement("p");
+				let button = document.createElement("button");
+
+				card.classList.add("uk-card", "uk-card-default", "uk-card-body", "uk-width-1-5");
+				name.classList.add("uk-card-title");
+				button.classList.add("uk-button", "uk-button-primary");
+
+				name.innerHTML = item.name;
+				price.innerHTML = item.price;
+				button.innerHTML = "Купить";
+				image.src = item.image;
+
+				//card.appendChild(...[name, price]);
+				card.appendChild(name);
+				card.appendChild(image);
+				card.appendChild(price);
+				card.appendChild(button);
+
+				body.appendChild(card);
+
+			}
+		}
+
+		if(data.type === "home") {
+			var div = document.createElement("div");
+
+			div.innerHTML = data.caption;
+			body.appendChild(div);
+
+		}
+
+	}

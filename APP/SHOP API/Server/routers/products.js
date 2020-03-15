@@ -15,9 +15,9 @@ module.exports = {
 		res.send();
 	},
 	id: {
-		get() {
+		get(req, res) {
 			var file = fs.readFileSync("../products.json");
-			var products = JSON.parse(file);
+			var products = JSON.parse(file)["products"];
 			
 			if(products[req.params.id]){
 				res.send(products[req.params.id]);

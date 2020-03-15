@@ -1,5 +1,5 @@
 module.exports = {
 	get(req, res) {
-		res.send("Home page");
+		res.send('{"type": "home", "caption": "Home page"}');
 	}
 }
